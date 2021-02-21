@@ -5,13 +5,14 @@ import java.awt.event.*;
 public class TicketForm extends JFrame implements ActionListener {
 	
     private final int FRAME_WIDTH = 370;
-    private final int FRAME_HEIGHT = 600;
+    private final int FRAME_HEIGHT = 620;
     private final int FRAME_X = 700;
     private final int FRAME_Y = 150; 
     
     // object
     private JPanel enterData;
-    private JLabel count;
+    private JLabel blank;
+    private JPanel count;
     private JLabel price;
     private JTextField seatACount;
     private JTextField seatAPrice;
@@ -19,8 +20,12 @@ public class TicketForm extends JFrame implements ActionListener {
     private JTextField seatBCount;
     private JTextField seatBPrice;
     private JLabel seatB;
+    private JTextField seatCCount;
+    private JTextField seatCPrice;
+    private JLabel seatC;
     private JButton btnReport;
     private JButton btnReset;
+    private JTextArea reportText;
     
 	public TicketForm() {
 		
@@ -34,6 +39,10 @@ public class TicketForm extends JFrame implements ActionListener {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BorderLayout()); 
         this.add(contentPanel);
+        
+        //
+        JPanel count = new JPanel();
+        JPanel price = new JPanel();
         
         // Seat A
         seatACount = new JTextField();
@@ -63,9 +72,24 @@ public class TicketForm extends JFrame implements ActionListener {
         
         seatB = new JLabel("Enter for Seat B:");
         
+        // Seat C
+        seatCCount = new JTextField();
+        seatCCount.setColumns(12);
+        seatCCount.setFont(new Font("Courier", Font.PLAIN, 11));
+        seatCCount.addActionListener(this);
+        
+        seatCPrice = new JTextField();
+        seatCPrice.setColumns(12);
+        seatCPrice.setFont(new Font("Courier", Font.PLAIN, 11));
+        
+        seatCPrice.addActionListener(this);
+        
+        seatC = new JLabel("Enter for Seat C:");
+        
         // Enter Data Section
         JPanel enterData = new JPanel();
         enterData.setBorder(BorderFactory.createTitledBorder("Enter Data"));
+        enterData.setPreferredSize(new Dimension(12, 120));
         enterData.setLayout(new FlowLayout());
         enterData.add(seatA);
         enterData.add(seatACount);
@@ -73,14 +97,25 @@ public class TicketForm extends JFrame implements ActionListener {
         enterData.add(seatB);
         enterData.add(seatBCount);
         enterData.add(seatBPrice);
+        enterData.add(seatC);
+        enterData.add(seatCCount);
+        enterData.add(seatCPrice);
         
-        JLabel count = new JLabel("Count");
-        JLabel price = new JLabel("Price ($)");
+        // Report Text Area
+        reportText = new JTextArea();
+        reportText.setColumns(28);
+        reportText.setRows(17);
+        reportText.setFont(new Font("Courier", Font.BOLD, 14));
+        reportText.setLineWrap(true);
+        reportText.setWrapStyleWord(true);
+        reportText.setEditable(false);
+        reportText.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         
         // Report Section
         JPanel report = new JPanel();
         report.setBorder(BorderFactory.createTitledBorder("Report"));
         report.setLayout(new FlowLayout());
+        report.add(reportText);
         
         // Button
         btnReport = new JButton("Create Report");
@@ -105,7 +140,14 @@ public class TicketForm extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		
     	if (event.getSource() == btnReset) {
-    		
+    		seatACount.setText("");
+    		seatAPrice.setText("");
+    		seatBCount.setText("");
+    		seatBPrice.setText("");
+    		seatCCount.setText("");
+    		seatCPrice.setText("");
+    		seatACount.requestFocusInWindow();
+
     	}
 	}	
 	
