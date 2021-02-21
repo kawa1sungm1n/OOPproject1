@@ -5,14 +5,15 @@ import java.awt.event.*;
 public class TicketForm extends JFrame implements ActionListener {
 	
     private final int FRAME_WIDTH = 370;
-    private final int FRAME_HEIGHT = 620;
+    private final int FRAME_HEIGHT = 550;
     private final int FRAME_X = 700;
     private final int FRAME_Y = 150; 
     
     // object
+    private JPanel topCount = new JPanel();
+    private JPanel topPrice = new JPanel();
     private JPanel enterData;
-    private JLabel blank;
-    private JPanel count;
+    private JLabel count;
     private JLabel price;
     private JTextField seatACount;
     private JTextField seatAPrice;
@@ -33,6 +34,7 @@ public class TicketForm extends JFrame implements ActionListener {
         this.setTitle("Concert Ticket Calculator");
         this.setSize(FRAME_WIDTH,FRAME_HEIGHT);
         this.setLocation(FRAME_X,FRAME_Y);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         // Setting up ContentPanel
@@ -41,8 +43,12 @@ public class TicketForm extends JFrame implements ActionListener {
         this.add(contentPanel);
         
         //
-        JPanel count = new JPanel();
-        JPanel price = new JPanel();
+        topCount.setBorder(BorderFactory.createEmptyBorder(0, 102, 0, 0));
+        count = new JLabel("Count");
+        topCount.add(count);
+        topPrice.setBorder(BorderFactory.createEmptyBorder(0, 55, 0, 60));
+        price = new JLabel("Price($)");
+        topPrice.add(price);
         
         // Seat A
         seatACount = new JTextField();
@@ -89,8 +95,10 @@ public class TicketForm extends JFrame implements ActionListener {
         // Enter Data Section
         JPanel enterData = new JPanel();
         enterData.setBorder(BorderFactory.createTitledBorder("Enter Data"));
-        enterData.setPreferredSize(new Dimension(12, 120));
+        enterData.setPreferredSize(new Dimension(12, 140));
         enterData.setLayout(new FlowLayout());
+        enterData.add(topCount);
+        enterData.add(topPrice);
         enterData.add(seatA);
         enterData.add(seatACount);
         enterData.add(seatAPrice);
@@ -103,9 +111,9 @@ public class TicketForm extends JFrame implements ActionListener {
         
         // Report Text Area
         reportText = new JTextArea();
-        reportText.setColumns(28);
-        reportText.setRows(17);
-        reportText.setFont(new Font("Courier", Font.BOLD, 14));
+        reportText.setColumns(29);
+        reportText.setRows(15);
+        reportText.setFont(new Font("Courier", Font.PLAIN, 12));
         reportText.setLineWrap(true);
         reportText.setWrapStyleWord(true);
         reportText.setEditable(false);
@@ -140,12 +148,14 @@ public class TicketForm extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		
     	if (event.getSource() == btnReset) {
+    		// interface clear
     		seatACount.setText("");
     		seatAPrice.setText("");
     		seatBCount.setText("");
     		seatBPrice.setText("");
     		seatCCount.setText("");
     		seatCPrice.setText("");
+    		reportText.setText("");
     		seatACount.requestFocusInWindow();
 
     	}
