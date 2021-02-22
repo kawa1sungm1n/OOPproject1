@@ -163,8 +163,7 @@ public class TicketForm extends JFrame implements ActionListener {
     	}
 	}	
 	
-	
-	
+		
     // ------------------------------------------- main method
 	public static void main(String[] args) {
 		TicketForm jframeForm;
