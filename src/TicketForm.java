@@ -149,6 +149,16 @@ public class TicketForm extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		
+		if (event.getSource() == btnReport) {
+			// Show Report
+			Seat seatA = new Seat(Integer.parseInt(seatACount.getText()),Double.parseDouble(seatAPrice.getText()),'A');
+			Seat seatB = new Seat(Integer.parseInt(seatBCount.getText()),Double.parseDouble(seatBPrice.getText()),'B');
+			Seat seatC = new Seat(Integer.parseInt(seatCCount.getText()),Double.parseDouble(seatCPrice.getText()),'C');
+			Report report = new Report(seatA, seatB, seatC);
+			reportText.setText(report.toString());
+			reportText.setFont(new Font("Monospaced", Font.PLAIN, 12));			
+		}
+		
     	if (event.getSource() == btnReset) {
     		// interface clear
     		seatACount.setText("");
@@ -159,8 +169,7 @@ public class TicketForm extends JFrame implements ActionListener {
     		seatCPrice.setText("");
     		reportText.setText("");
     		seatACount.requestFocusInWindow();
-
-    	}
+    	}	
 	}	
 	
 		
