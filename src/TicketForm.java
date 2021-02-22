@@ -36,17 +36,19 @@ public class TicketForm extends JFrame implements ActionListener {
         this.setLocation(FRAME_X,FRAME_Y);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         
         // Setting up ContentPanel
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new BorderLayout()); 
+        contentPanel.setLayout(new BorderLayout());
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10 , 10 , 10));
         this.add(contentPanel);
         
         //
-        topCount.setBorder(BorderFactory.createEmptyBorder(0, 102, 0, 0));
+        topCount.setBorder(BorderFactory.createEmptyBorder(0, 98, 0, 0));
         count = new JLabel("Count");
         topCount.add(count);
-        topPrice.setBorder(BorderFactory.createEmptyBorder(0, 55, 0, 60));
+        topPrice.setBorder(BorderFactory.createEmptyBorder(0, 58, 0, 60));
         price = new JLabel("Price($)");
         topPrice.add(price);
         
@@ -112,7 +114,7 @@ public class TicketForm extends JFrame implements ActionListener {
         // Report Text Area
         reportText = new JTextArea();
         reportText.setColumns(29);
-        reportText.setRows(15);
+        reportText.setRows(14);
         reportText.setFont(new Font("Courier", Font.PLAIN, 12));
         reportText.setLineWrap(true);
         reportText.setWrapStyleWord(true);
