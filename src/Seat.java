@@ -1,5 +1,6 @@
 
 public class Seat {
+	// initialize count, price ,type
 	private int count;
 	private double price;
 	private char type;
@@ -10,6 +11,7 @@ public class Seat {
 		this.type = type;
 	}
 	
+	// make getter of Count, Price, type, and Total
 	public int getCount() {
 		return count;
 	}
